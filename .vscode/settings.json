@@ -1,0 +1,18 @@
+{
+  // Définit Biome comme formateur par défaut
+  "editor.defaultFormatter": "biomejs.biome",
+  
+  // Active le formatage automatique à la sauvegarde
+  "editor.formatOnSave": true,
+  
+  // Active les corrections automatiques (linting) à la sauvegarde
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+
+  // Désactive les autres formateurs pour éviter les conflits
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

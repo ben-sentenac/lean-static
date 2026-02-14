@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    /* Cible et Environnement */
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    /* Mode "Vérification uniquement" */
+    "noEmit": true,
+    "isolatedModules": true, // Requis pour les outils comme tsx/esbuild
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Strictesse (Recommandé) */
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
+}

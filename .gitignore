@@ -1,0 +1,20 @@
+# Dépendances
+node_modules/
+.pnpm-debug.log*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement (clés API, secrets)
+.env
+.env.local
+.env.*.local
+
+# Dossiers OS (macOS / Windows)
+.DS_Store
+Thumbs.db
+
+dist/
+out/
