@@ -1,0 +1,10 @@
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><%= it.site.name %></a>
+    <nav class="nav">
+      <% it.nav.forEach(function(item){ %>
+        <a href="<%= item.urlPath %>"><%= item.label %></a>
+      <% }) %>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,16 @@
+{
+    "name": "LeanWeb",
+    "url": "https://example.com",
+    "locale": "fr-FR",
+    "timezone": "Europe/Paris",
+    "titleDefault": "LeanWeb — Performance web durable",
+    "descriptionDefault": "Sites rapides, solides, durables pour entreprises locales.",
+    "social": {
+        "linkedin": "https://www.linkedin.com/in/...",
+        "github": "https://github.com/..."
+    },
+    "blog": {
+        "basePath": "/blog",
+        "postsPerPage": 12
+    }
+}

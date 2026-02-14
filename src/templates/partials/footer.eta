@@ -1,0 +1,5 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <%= new Date().getFullYear() %> <%= it.site.name %>. Sites rapides. Solides. Durables.</p>
+  </div>
+</footer>

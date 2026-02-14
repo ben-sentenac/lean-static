@@ -1,0 +1,4 @@
+<article class="page">
+  <h1><%= it.page.fm.title %></h1>
+  <div class="content"><%~ it.page.bodyHtml %></div>
+</article>
