@@ -2,6 +2,7 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 import { auditDist } from "../core/audit/auditDist.js";
+import { auditDistWithSummary } from "../core/audit/auditDistWithSummary.js";
 import { readJSONSafe } from "../core/json/readJsonSafe.js";
 import { parseSiteConfig } from "../core/validate/siteConfig.js";
 import { logger } from "../lib/logger.js";
@@ -18,10 +19,10 @@ const STYLES_DIR = path.join(ROOT, "src", "styles");
 export async function build(): Promise<void> {
 	await cleanDist(DIST_DIR);
 
-	const site = await loadSiteConfig(SITE_JSON);
+	const siteConfig = await loadSiteConfig(SITE_JSON);
 
 	// TEMP: on vérifie qu’on arrive ici
-	logger.debug(`[build] config loaded: ${site.name}`);
+	logger.debug(`[build] config loaded: ${siteConfig.name}`);
 
 	// next:
 	// - copyPublic()
@@ -36,11 +37,10 @@ export async function build(): Promise<void> {
 		outFile: path.join(DIST_DIR, "assets", "main.css"),
 	});
 
-	if (site.budgets) {
-		await auditDist({
+	if (siteConfig.budgets) {
+		await auditDistWithSummary({
 			distDir: "dist",
-			budget: site.budgets,
-			includeAuditFile: true,
+			budget: siteConfig.budgets,
 		});
 	}
 

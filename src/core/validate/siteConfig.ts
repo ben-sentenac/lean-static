@@ -20,7 +20,7 @@ export function parseSiteConfig(input: unknown): SiteConfig {
 	}
 	const obj = input as Record<string, unknown>;
 
-	// refuse unknown keys
+	// refuser unknown keys//TODO replace withhelper assertNoUnknownKey
 	for (const k of Object.keys(obj)) {
 		if (!ALLOWED_TOP_KEYS.has(k))
 			throw new Error(`Unknown key in site.config.json: ${k}`);

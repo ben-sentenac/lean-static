@@ -1,4 +1,4 @@
-import fs, { readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { sanitize } from "./sanitize.js";
 
 export async function readJSONSafe<T = unknown>(filePath: string): Promise<T> {
