@@ -12,5 +12,20 @@
     "blog": {
         "basePath": "/blog",
         "postsPerPage": 12
+    },
+    "budgets": {
+        "strict": true,
+        "maxTransferBytes": 250000,
+        "maxRequests": 40,
+        "maxJsBytes": 0,
+        "maxCssBytes": 60000,
+        "maxImageBytes": 150000,
+        "maxSingleImageBytes": 80000,
+        "estimate": {
+            "enabled": true,
+            "requestOverheadBytes": 2048,
+            "kwhPerGB": 0.5,
+            "emissionFactor_gPerKwh": 50
+        }
     }
 }

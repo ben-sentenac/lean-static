@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node --import tsx --test src/**/**/*.test.ts",
-    "dev": "node --import tsx --watch src/build/build.ts",
+    "build": "node --import tsx --watch src/build/build.ts",
     "check": "tsc --noEmit",
     "lint": "biome check src"
   },

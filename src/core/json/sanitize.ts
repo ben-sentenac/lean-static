@@ -1,10 +1,6 @@
-const FORBIDDEN_KEYS = new Set(["__proto__", "prototype", "constructor"]);
+import { isPlainObject } from "../validate/utils.js";
 
-function isPlainObject(x: unknown): x is Record<string, unknown> {
-	if (x === null || typeof x !== "object") return false;
-	const proto = Object.getPrototypeOf(x);
-	return proto === Object.prototype || proto === null;
-}
+const FORBIDDEN_KEYS = new Set(["__proto__", "prototype", "constructor"]);
 
 export function sanitize(value: unknown, path = "root"): unknown {
 	if (Array.isArray(value)) {

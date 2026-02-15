@@ -1,26 +1,6 @@
 import type { SiteConfig } from "../../build/types.js";
-
-function expectString(v: unknown, field: string): string {
-	if (typeof v !== "string" || v.trim() === "")
-		throw new Error(`Invalid ${field}`);
-	return v;
-}
-
-function expectNumber(v: unknown, field: string): number {
-	if (typeof v !== "number" || !Number.isFinite(v))
-		throw new Error(`Invalid ${field}`);
-	return v;
-}
-
-function expectOptionalObject(
-	v: unknown,
-	field: string,
-): Record<string, unknown> | undefined {
-	if (v === undefined) return undefined;
-	if (!v || typeof v !== "object" || Array.isArray(v))
-		throw new Error(`Invalid ${field}`);
-	return v as Record<string, unknown>;
-}
+import { parseBudgetConfig } from "./budgetConfig.js";
+import { expectNumber, expectOptionalObject, expectString } from "./utils.js";
 
 const ALLOWED_TOP_KEYS = new Set([
 	"name",
@@ -31,22 +11,24 @@ const ALLOWED_TOP_KEYS = new Set([
 	"descriptionDefault",
 	"blog",
 	"social",
+	"budgets",
 ]);
 
 export function parseSiteConfig(input: unknown): SiteConfig {
 	if (!input || typeof input !== "object" || Array.isArray(input)) {
-		throw new Error("site.json must be an object");
+		throw new Error("site.config.json must be an object");
 	}
 	const obj = input as Record<string, unknown>;
 
 	// refuse unknown keys
 	for (const k of Object.keys(obj)) {
 		if (!ALLOWED_TOP_KEYS.has(k))
-			throw new Error(`Unknown key in site.json: ${k}`);
+			throw new Error(`Unknown key in site.config.json: ${k}`);
 	}
 
 	const blogObj = expectOptionalObject(obj.blog, "blog");
 	const socialObj = expectOptionalObject(obj.social, "social");
+	const budgets = parseBudgetConfig(obj.budgets);
 
 	const cfg: SiteConfig = {
 		name: expectString(obj.name, "name"),
@@ -80,6 +62,10 @@ export function parseSiteConfig(input: unknown): SiteConfig {
 			out[k] = v;
 		}
 		cfg.social = out;
+	}
+
+	if (budgets) {
+		cfg.budgets = budgets;
 	}
 
 	return cfg;

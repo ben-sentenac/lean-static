@@ -5,8 +5,8 @@ import fsp from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { parseSiteConfig } from "../validate/site-config.js";
-import { readJSONSafe } from "./read-json-safe.js";
+import { parseSiteConfig } from "../validate/siteConfig.js";
+import { readJSONSafe } from "./readJsonSafe.js";
 
 async function withTempDir(fn: (dir: string) => Promise<void>) {
 	const dir = await fsp.mkdtemp(path.join(os.tmpdir(), "lean-static-"));
@@ -142,7 +142,7 @@ test("parseSiteConfig: rejects unknown top-level keys", async () => {
 				descriptionDefault: "y",
 				unexpected: true,
 			}),
-		/Unknown key in site\.json: unexpected/,
+		/Unknown key in site\.config\.json: unexpected/,
 	);
 });
 
