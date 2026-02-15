@@ -1,5 +1,5 @@
 ---
-type: page
+kind: page
 title: "Contact"
 description: "Demandez un devis ou un audit."
 slug: "contact"

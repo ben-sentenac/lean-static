@@ -6,7 +6,7 @@ import {
 	readBoolean,
 	readOptionalNonNegativeInt,
 	readOptionalNonNegativeNumber,
-} from "./utils.js";
+} from "../utils/utils.js";
 
 export function parseBudgetConfig(input: unknown): Budget | undefined {
 	if (typeof input === "undefined") return undefined;

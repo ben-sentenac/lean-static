@@ -1,5 +1,3 @@
-import type { Budget } from "../core/audit/types.js";
-
 export type ContentType = "page" | "post";
 
 export interface FrontMatterBase {
@@ -31,18 +29,6 @@ export interface ContentDoc {
 	bodyHtml: string;
 	urlPath: string; // e.g. "/contact/"
 	outputPath: string; // e.g. "dist/contact/index.html"
-}
-
-export interface SiteConfig {
-	name: string;
-	url: string;
-	locale: string;
-	timezone: string;
-	titleDefault: string;
-	descriptionDefault: string;
-	social?: Record<string, string>;
-	blog?: { basePath: string; postsPerPage: number };
-	budgets?: Budget;
 }
 
 export interface PageContext {

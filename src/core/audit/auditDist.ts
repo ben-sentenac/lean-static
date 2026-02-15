@@ -1,5 +1,6 @@
 import { lstat, readdir, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { toPosix } from "../utils/utils.js";
 import { computeAuditReport } from "./computeAuditReport.js";
 import type { AuditedAsset, Budget } from "./types.js";
 
@@ -48,10 +49,6 @@ async function collectDistAssets(
 	const out: AuditedAsset[] = [];
 	await walk(distAbs, distAbs, out, opts);
 	return out;
-}
-
-function toPosix(p: string) {
-	return p.split(path.sep).join("/");
 }
 
 async function walk(

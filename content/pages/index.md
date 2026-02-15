@@ -1,5 +1,5 @@
 ---
-type: page
+kind: page
 title: "Accueil"
 description: "Performance web durable pour entreprises locales."
 slug: ""

@@ -3,6 +3,7 @@ import fsp from "node:fs/promises";
 import path from "node:path";
 import { auditDist } from "../core/audit/auditDist.js";
 import { auditDistWithSummary } from "../core/audit/auditDistWithSummary.js";
+import { loadContent } from "../core/content/loadContent.js";
 import { readJSONSafe } from "../core/json/readJsonSafe.js";
 import { parseSiteConfig } from "../core/validate/siteConfig.js";
 import { logger } from "../lib/logger.js";
@@ -43,6 +44,10 @@ export async function build(): Promise<void> {
 			budget: siteConfig.budgets,
 		});
 	}
+
+	const content = await loadContent({
+		contentDir: "content",
+	});
 
 	logger.debug("[build] ok");
 }

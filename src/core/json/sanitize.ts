@@ -1,4 +1,4 @@
-import { isPlainObject } from "../validate/utils.js";
+import { isPlainObject } from "../utils/utils.js";
 
 const FORBIDDEN_KEYS = new Set(["__proto__", "prototype", "constructor"]);
 

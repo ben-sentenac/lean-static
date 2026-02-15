@@ -1,6 +1,10 @@
-import type { SiteConfig } from "../../build/types.js";
+import {
+	expectNumber,
+	expectOptionalObject,
+	expectString,
+} from "../utils/utils.js";
 import { parseBudgetConfig } from "./budgetConfig.js";
-import { expectNumber, expectOptionalObject, expectString } from "./utils.js";
+import type { SiteConfig } from "./types.js";
 
 const ALLOWED_TOP_KEYS = new Set([
 	"name",
