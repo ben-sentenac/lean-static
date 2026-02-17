@@ -5,9 +5,9 @@ import { auditDist } from "../core/audit/auditDist.js";
 import { auditDistWithSummary } from "../core/audit/auditDistWithSummary.js";
 import { loadContent } from "../core/content/loadContent.js";
 import { readJSONSafe } from "../core/json/readJsonSafe.js";
+import { buildRoutes } from "../core/routes/buildRoutes.js";
 import { parseSiteConfig } from "../core/validate/siteConfig.js";
 import { logger } from "../lib/logger.js";
-import type { SiteConfig } from "./types.js";
 
 const ROOT = process.cwd();
 const DIST_DIR = path.join(ROOT, "dist");
@@ -48,6 +48,8 @@ export async function build(): Promise<void> {
 	const content = await loadContent({
 		contentDir: "content",
 	});
+
+	logger.info(buildRoutes(content));
 
 	logger.debug("[build] ok");
 }
